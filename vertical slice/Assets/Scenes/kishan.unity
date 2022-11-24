@@ -334,7 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerY2: 0
-  hitbox: {fileID: 5551323590360986302, guid: a082a9527bf2c5c40b38da1427a1d694, type: 3}
+  PunchHitbox: {fileID: 5551323590360986302, guid: a082a9527bf2c5c40b38da1427a1d694, type: 3}
+  UpsmashHitbox: {fileID: 5987710616905264287, guid: 9a622bec860fd334c99d6f95a4fc1736, type: 3}
 --- !u!135 &1773003452
 SphereCollider:
   m_ObjectHideFlags: 0

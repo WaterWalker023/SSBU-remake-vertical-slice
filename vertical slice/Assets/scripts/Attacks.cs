@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-    public float playerY2;
-    public GameObject hitbox;
+    private float timer;
+    public float delay;
+    public float secondDelay;
+    public GameObject Hitbox;
     private GameObject HitboxInstance;
-    private float frameWait= 0.016f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,33 +19,43 @@ public class Attacks : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        playerY2 = Input.GetAxis("Vertical2");
-        if (playerY2 >= 0.8||Input.GetKey(KeyCode.UpArrow))
+        timer += Time.deltaTime;
+        if(timer > delay && timer < secondDelay)
         {
-            upsmash();
+            HitboxInstance = Instantiate(Hitbox, new Vector3(0, 0, -0.923f), Quaternion.identity, gameObject.transform);
         }
-        Debug.Log(playerY2);
-        if (Input.GetKeyDown("joystick button 2")||Input.GetKeyDown(KeyCode.E))
+        if (timer > secondDelay)
         {
-            Debug.Log("punch");
-            punch();
+            Destroy(HitboxInstance);
         }
-        
     }
 
-    IEnumerator punch()
+    void ExecuteAttack()
     {
         Debug.Log("test");
         //animatie doen
-        yield return new WaitForSeconds(0.016f);
-        HitboxInstance = Instantiate(hitbox, new Vector3(0, 0, -0.923f), Quaternion.identity, gameObject.transform);
-        Destroy(HitboxInstance, 0.05f);
-
     }
 
-    public void upsmash()
+    /*IEnumerator punch2()
     {
-        //de animatie doen
+        yield return new WaitUntil(AnimationDone == true);
+        HasPunched = false;
+        Debug.Log("test");
+        //animatie doen
+        yield return new WaitForSeconds(0.048f); //wacht 3 frames
+        HitboxInstance = Instantiate(PunchHitbox2, new Vector3(0, 0, -0.923f), Quaternion.identity, gameObject.transform);
+        Destroy(HitboxInstance, 0.016f);
+        StopAllCoroutines();
     }
+
+    IEnumerator upsmash()
+    {
+        Debug.Log("test");
+        //de animatie doen
+            yield return new WaitForSeconds(0.192f); //wacht 12 frames
+            HitboxInstance = Instantiate(UpsmashHitbox, new Vector3(0,0,-0.923f), Quaternion.identity, gameObject.transform);
+            Destroy(HitboxInstance, 1.4f);
+            StopAllCoroutines();
+        
+    }*/
 }
