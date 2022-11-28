@@ -469,11 +469,10 @@ GameObject:
   - component: {fileID: 1425783296}
   - component: {fileID: 1425783295}
   - component: {fileID: 1425783294}
-  - component: {fileID: 1425783298}
   - component: {fileID: 1425783299}
   - component: {fileID: 1425783300}
   m_Layer: 0
-  m_Name: player
+  m_Name: Kirby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,18 +556,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1425783298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425783293}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ac1ecd28671c448a3f1999f3680925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1425783299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 10
   canJump: 1
-  movementSpeed: 5
+  movementSpeed: 7
 --- !u!54 &1425783300
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -806,8 +793,9 @@ GameObject:
   - component: {fileID: 1989002423}
   - component: {fileID: 1989002422}
   - component: {fileID: 1989002421}
+  - component: {fileID: 1989002426}
   m_Layer: 0
-  m_Name: AI
+  m_Name: Jigglypuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,6 +879,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989002426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989002420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ac1ecd28671c448a3f1999f3680925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112797447
 GameObject:
   m_ObjectHideFlags: 0
