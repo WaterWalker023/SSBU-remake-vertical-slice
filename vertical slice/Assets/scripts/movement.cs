@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    public bool attacked;
+    public float percentage; //     de percentage van gameobject counted after the attack's damage is added
+    public float damage; //         damage van last attack 
+    public float weight; //         de weight van gameobject
+    public float scaling; //        the attack's knockback scaling (also known as knockback growth) divided by 100 (so a scaling of 110 is input as 1.1).
+    public float baseknockback; //  attack's base knockback.
+    public float angleatteck; //    de angle van de atteck 
+
+
+
+
     float playerX;
     float playerY;
     float playerX2;
@@ -14,6 +25,8 @@ public class movement : MonoBehaviour
     [SerializeField] int jumpsleft;
     [SerializeField] Rigidbody rb;
     buttonmapping buttons;
+    bool playerY08;
+    bool playerY082;
 
     //[SerializeField] float gravity;
     public Transform groundCheck;
@@ -58,16 +71,33 @@ public class movement : MonoBehaviour
         {
             transform.position += new Vector3(walkingspeed, 0, 0) * Time.deltaTime;
         }
-        if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown("joystick " + buttons.west)) && jumpsleft != 0)
+        if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick " + buttons.west) || (playerY08 && playerY082)) && jumpsleft != 0)
         {
+
             jumpsleft--;
             jump();
             //Debug.Log("jump");
         }
+        if (playerY > 0.8 && !playerY082)
+        {
+            playerY08 = true;
+            playerY082 = true;
+        }
+        else if (playerY < 0.8 || playerY082)
+        {
+            playerY082 = false;
+        }
+
         if (isGrounded && grounds.Count > 0)
         {
             jumpsleft = 5;
         }
+        if (attacked)
+        {
+            Debug.Log((((percentage / 10)+((percentage*damage)/20)*(200/(weight+100)*1.4)+18)*scaling)+baseknockback);
+              
+        }
+
     }
     void jump()
     {
