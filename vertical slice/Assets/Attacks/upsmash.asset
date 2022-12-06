@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf705480a66174b45bae78c68e2fecfc, type: 3}
+  m_Name: upsmash
+  m_EditorClassIdentifier: 
+  AttackName: Upsmash
+  Scaling: 1.04
+  BaseKncokBack: 36
+  AngleAttack: 1.309
+  SpawnDelay: 0.192
+  DespawnDelay: 0.08
+  Hitbox: {fileID: 5987710616905264287, guid: 9a622bec860fd334c99d6f95a4fc1736, type: 3}
+  Damage: 15
