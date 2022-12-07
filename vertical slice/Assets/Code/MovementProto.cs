@@ -4,37 +4,88 @@ using UnityEngine;
 
 public class MovementProto : MonoBehaviour
 {
-    private Rigidbody rb;
-    public float jumpPower = 8;
-    public bool canJump = true;
-    public float movementSpeed = 3;
+    float playerX;
+    float playerY;
+    float playerX2;
+    float playerY2;
+    [SerializeField] float walkingspeed;
+    [SerializeField] float runningspeed;
+    [SerializeField] float jumpstrength;
+    [SerializeField] int jumpsleft;
+    [SerializeField] Rigidbody rb;
+    buttonmapping buttons;
+
+    //[SerializeField] float gravity;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundLayerMask;
+    public bool isGrounded;
+    public List<GameObject> grounds;
+
+    // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        buttons = GameObject.Find("Main Camera").GetComponent<controllerdetector>().player1;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && canJump == true)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayerMask);
+        playerX = Input.GetAxis("Horizontal");
+        playerY = Input.GetAxis("Vertical");
+        playerX2 = Input.GetAxis("Horizontal2");
+        playerY2 = Input.GetAxis("Vertical2");
+
+        //Debug.Log("("+playerX + ", " +playerY+ ", " + playerX2 + ", " + playerY2 + ")");
+        if (playerX == 0)// standing stil
         {
-            rb.velocity = new Vector3(0, jumpPower, 0);
+
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (playerX == 1) // running rechts
         {
-            transform.position += new Vector3(-movementSpeed, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(runningspeed, 0, 0) * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (playerX == -1) // running links
         {
-            transform.position += new Vector3(movementSpeed, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(-runningspeed, 0, 0) * Time.deltaTime;
         }
+        else if (playerX >= -1 && playerX <= 0) // walking links
+        {
+            transform.position += new Vector3(-walkingspeed, 0, 0) * Time.deltaTime;
+        }
+        else if (playerX <= 1 && playerX >= 0) // walking rechts
+        {
+            transform.position += new Vector3(walkingspeed, 0, 0) * Time.deltaTime;
+        }
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) && jumpsleft != 0)
+        {
+            jumpsleft--;
+            jump();
+            //Debug.Log("jump");
+        }
+        if (isGrounded && grounds.Count > 0)
+        {
+            jumpsleft = 5;
+        }
+    }
+    void jump()
+    {
+        rb.velocity = new Vector3(0, jumpstrength, 0);
     }
     private void OnCollisionEnter(Collision collision)
     {
-        canJump = true;
+        if (collision.transform.tag == "Solidground" || collision.transform.tag == "Platform")
+        {
+            grounds.Add(collision.gameObject);
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
-        canJump = false;
+        if (collision.transform.tag == "Solidground" || collision.transform.tag == "Platform")
+        {
+            grounds.Remove(collision.gameObject);
+        }
     }
 
 }
