@@ -25,8 +25,8 @@ public class movement : MonoBehaviour
     [SerializeField] int jumpsleft;
     [SerializeField] Rigidbody rb;
     buttonmapping buttons;
-    bool playerY08;
-    bool playerY082;
+    [SerializeField] bool playerY08;
+    [SerializeField] bool playerY082;
 
     //[SerializeField] float gravity;
     public Transform groundCheck;
@@ -34,6 +34,8 @@ public class movement : MonoBehaviour
     public LayerMask groundLayerMask;
     public bool isGrounded;
     public List<GameObject> grounds;
+    //public float force;
+    public double force;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,8 @@ public class movement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayerMask);
         playerX = Input.GetAxis("Horizontal");
         playerY = Input.GetAxis("Vertical");
@@ -71,14 +74,8 @@ public class movement : MonoBehaviour
         {
             transform.position += new Vector3(walkingspeed, 0, 0) * Time.deltaTime;
         }
-        if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick " + buttons.west) || (playerY08 && playerY082)) && jumpsleft != 0)
-        {
-
-            jumpsleft--;
-            jump();
-            //Debug.Log("jump");
-        }
-        if (playerY > 0.8 && !playerY082)
+        /*
+        if (playerY > 0.8 && playerY08)
         {
             playerY08 = true;
             playerY082 = true;
@@ -87,6 +84,14 @@ public class movement : MonoBehaviour
         {
             playerY082 = false;
         }
+        */
+        if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick " + buttons.west) || (playerY08 && playerY082)) && jumpsleft != 0)  
+        {
+            playerY08 = false;
+            jumpsleft--;
+            jump();
+            //Debug.Log("jump");
+        }
 
         if (isGrounded && grounds.Count > 0)
         {
@@ -94,8 +99,10 @@ public class movement : MonoBehaviour
         }
         if (attacked)
         {
+            attacked = false;
             Debug.Log((((percentage / 10)+((percentage*damage)/20)*(200/(weight+100)*1.4)+18)*scaling)+baseknockback);
-              
+            force = (((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback;
+            rb.AddForce(((float)force) * Mathf.Cos(angleatteck), ((float)force) * Mathf.Sin(angleatteck), 0);
         }
 
     }
