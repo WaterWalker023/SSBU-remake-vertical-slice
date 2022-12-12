@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackName: Upsmash
   Scaling: 1.04
-  BaseKncokBack: 36
+  BaseKnockBack: 0
   AngleAttack: 1.309
   SpawnDelay: 0.192
-  DespawnDelay: 0.08
-  Hitbox: {fileID: 5987710616905264287, guid: 9a622bec860fd334c99d6f95a4fc1736, type: 3}
-  Damage: 12
+  DespawnDelay: 9
+  Hitbox: {fileID: 8565873926600329668, guid: 9a622bec860fd334c99d6f95a4fc1736, type: 3}
+  Damage: 25.2

@@ -6,7 +6,7 @@ public class Attack : ScriptableObject
 {
     public string AttackName;
     public float Scaling;
-    public float BaseKncokBack;
+    public float BaseKnockBack;
     public float AngleAttack;
     public float SpawnDelay;
     public float DespawnDelay;

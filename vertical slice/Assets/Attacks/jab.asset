@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackName: jab
   Scaling: 0.25
-  BaseKncokBack: 20
+  BaseKnockBack: 0
   AngleAttack: 6.3006
   SpawnDelay: 0.032
-  DespawnDelay: 0.016
-  Hitbox: {fileID: 5551323590360986302, guid: a082a9527bf2c5c40b38da1427a1d694, type: 3}
+  DespawnDelay: 1
+  Hitbox: {fileID: 7480136911868039049, guid: a082a9527bf2c5c40b38da1427a1d694, type: 3}
   Damage: 1.8

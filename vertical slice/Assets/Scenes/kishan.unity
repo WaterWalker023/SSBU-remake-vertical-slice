@@ -314,7 +314,6 @@ GameObject:
   - component: {fileID: 1773003453}
   - component: {fileID: 1773003452}
   - component: {fileID: 1773003456}
-  - component: {fileID: 1773003457}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -417,23 +416,8 @@ MonoBehaviour:
   Jab: {fileID: 11400000, guid: ebcd3687568a26242ad670a8dfe590d0, type: 2}
   Jab2: {fileID: 11400000, guid: ca46a4d2a57aa704ea4979400b33e463, type: 2}
   attack: {fileID: 0}
---- !u!114 &1773003457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773003450}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91bd75b3cc95de14a942204e0957e1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rollout: {fileID: 0}
-  UpSmash: {fileID: 0}
-  Jab: {fileID: 0}
-  Jab2: {fileID: 0}
-  attack: {fileID: 0}
+  jab2Cooldown: 0
+  ChargeCounter: 0
 --- !u!1 &1980724446
 GameObject:
   m_ObjectHideFlags: 0

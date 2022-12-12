@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackName: rollout
   Scaling: 0.6
-  BaseKncokBack: 60
+  BaseKnockBack: 0
   AngleAttack: 0.523599
-  SpawnDelay: 1
-  DespawnDelay: 0
-  Hitbox: {fileID: 0}
-  Damage: 7
+  SpawnDelay: 0.832
+  DespawnDelay: 2.256
+  Hitbox: {fileID: 907504424178513944, guid: 341a6142b9894ad4d8d18fb5f6f03825, type: 3}
+  Damage: 10
