@@ -10,10 +10,10 @@ public class DoAttacks : MonoBehaviour
     [SerializeField] private Attack Jab;
     [SerializeField] private Attack Jab2;
     [SerializeField] private Attack attack;
-    [SerializeField] private float jab2Cooldown;
-    [SerializeField] private float ChargeCounter;
+    private float jab2Cooldown;
+    private float UpsmashChargeCounter;
+    private float RolloutChargeCounter;
     private float timer;
-    private bool timelimitreached;
     private float PlayerY2;
     // Start is called before the first frame update
     void Start()
@@ -30,36 +30,38 @@ public class DoAttacks : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 1"))
         {
-            ChargeCounter++;
+            RolloutChargeCounter++;
         }
         if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 1"))
         {
-            Rollout.Damage += ChargeCounter / 60;
-            if (ChargeCounter == 222)
-            {
-                Rollout.Damage = 25.2f;
-            }
-            ChargeCounter = 0;
+            Rollout.Damage += RolloutChargeCounter / 60;
+            
+            RolloutChargeCounter = 0;
+            ExecuteAttack(Rollout);
+        }
+        if (RolloutChargeCounter >= 222)
+        {
+            RolloutChargeCounter = 0;
+            Rollout.Damage = 25.2f;
             ExecuteAttack(Rollout);
         }
         if (Input.GetKey(KeyCode.R) || PlayerY2 >= 0.8)
         {
-            ChargeCounter += Time.deltaTime;
+            UpsmashChargeCounter += Time.deltaTime;
         }
-        if ((Input.GetKeyUp(KeyCode.R) || PlayerY2 < -0.8) && !timelimitreached)
+        if (Input.GetKeyUp(KeyCode.R) || PlayerY2 < 0)
         {
-            timelimitreached = false;
             UpSmash.Damage = 15;
-            UpSmash.Damage += ChargeCounter / 60;   
-            ChargeCounter = 0;
+            UpSmash.Damage += UpsmashChargeCounter / 60;
+            UpsmashChargeCounter = 0;
             ExecuteAttack(UpSmash);
         }
-        /*if (ChargeCounter >= 222)
+        if (UpsmashChargeCounter >= 222)
         {
-            timelimitreached = true;
+            UpsmashChargeCounter = 0;
             UpSmash.Damage = 25.2f;
             ExecuteAttack(UpSmash);
-        }*/
+        }
         if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown("joystick button 2"))
         {
             ExecuteAttack(Jab2);
@@ -70,6 +72,7 @@ public class DoAttacks : MonoBehaviour
             if (timer > attack.SpawnDelay && timer < attack.DespawnDelay)
             {
                 HitboxInstance = Instantiate(attack.Hitbox, transform.position + new Vector3(0, 0, -0.923f), Quaternion.identity);
+                Debug.Log(HitboxInstance);
             }
             if (timer > attack.DespawnDelay)
             {
