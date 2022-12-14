@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class movement : MonoBehaviour
 {
     public bool attacked;
@@ -11,7 +12,6 @@ public class movement : MonoBehaviour
     public float scaling; //        the attack's knockback scaling (also known as knockback growth) divided by 100 (so a scaling of 110 is input as 1.1).
     public float baseknockback; //  attack's base knockback.
     public float angleatteck; //    de angle van de atteck 
-
 
 
 
@@ -27,6 +27,7 @@ public class movement : MonoBehaviour
     buttonmapping buttons;
     [SerializeField] bool playerY08;
     [SerializeField] bool playerY082;
+    public float offset;
 
     //[SerializeField] float gravity;
     public Transform groundCheck;
@@ -34,8 +35,10 @@ public class movement : MonoBehaviour
     public LayerMask groundLayerMask;
     public bool isGrounded;
     public List<GameObject> grounds;
-    //public float force;
+    public List<GameObject> platform;
     public double force;
+    bool movedoorplatform;
+    float movedoorplatformtimer;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +88,7 @@ public class movement : MonoBehaviour
             playerY082 = false;
         }
         */
+        
         if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick " + buttons.west) || (playerY08 && playerY082)) && jumpsleft != 0)  
         {
             playerY08 = false;
@@ -104,6 +108,33 @@ public class movement : MonoBehaviour
             force = (((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback;
             rb.AddForce(((float)force) * Mathf.Cos(angleatteck), ((float)force) * Mathf.Sin(angleatteck), 0);
         }
+        if (playerY <= -0.8)
+        {
+            if (!movedoorplatform)
+            {
+                movedoorplatformtimer = 0;
+                for (int i = 0; i < platform.Count; i++)
+                {
+                    Physics.IgnoreCollision(transform.GetComponent<Collider>(), platform[i].GetComponent<Collider>(), true);
+                }
+            }
+            movedoorplatform = true;
+            movedoorplatformtimer += Time.deltaTime;
+        }
+        else if (movedoorplatformtimer >= 1)
+        {
+
+        }
+        else if (movedoorplatform)
+        {
+            movedoorplatform = false;
+            for (int i = 0; i < platform.Count; i++)
+            {
+                Physics.IgnoreCollision(transform.GetComponent<Collider>(), platform[i].GetComponent<Collider>(), false);
+            }
+
+        }
+
 
     }
     void jump()
