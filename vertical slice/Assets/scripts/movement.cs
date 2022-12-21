@@ -13,20 +13,14 @@ public class movement : MonoBehaviour
     public float baseknockback; //  attack's base knockback.
     public float angleatteck; //    de angle van de atteck 
 
-
-
-    float playerX;
-    float playerY;
-    float playerX2;
-    float playerY2;
     [SerializeField] float walkingspeed;
     [SerializeField] float runningspeed;
     [SerializeField] float jumpstrength;
     [SerializeField] int jumpsleft;
     [SerializeField] Rigidbody rb;
-    buttonmapping buttons;
-    [SerializeField] bool playerY08;
-    [SerializeField] bool playerY082;
+    //buttonmapping buttons;
+    //[SerializeField] bool playerY08;
+    //[SerializeField] bool playerY082;
     public float offset;
 
     //[SerializeField] float gravity;
@@ -43,7 +37,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttons = GameObject.Find("Main Camera").GetComponent<controllerdetector>().player1;
+        //buttons = GameObject.Find("Main Camera").GetComponent<controllerdetector>().player1;
     }
 
     // Update is called once per frame
@@ -51,12 +45,13 @@ public class movement : MonoBehaviour
     { 
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayerMask);
+        /*
         playerX = Input.GetAxis("Horizontal");
         playerY = Input.GetAxis("Vertical");
         playerX2 = Input.GetAxis("Horizontal2");
         playerY2 = Input.GetAxis("Vertical2");
         
-        //Debug.Log("("+playerX + ", " +playerY+ ", " + playerX2 + ", " + playerY2 + ")");
+        
         if (playerX == 0)// standing stil
         {
 
@@ -77,21 +72,30 @@ public class movement : MonoBehaviour
         {
             transform.position += new Vector3(walkingspeed, 0, 0) * Time.deltaTime;
         }
-        /*
-        if (playerY > 0.8 && playerY08)
-        {
-            playerY08 = true;
-            playerY082 = true;
-        }
-        else if (playerY < 0.8 || playerY082)
-        {
-            playerY082 = false;
-        }
         */
-        
-        if ((Input.GetKeyDown("joystick " + buttons.noord) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick " + buttons.west) || (playerY08 && playerY082)) && jumpsleft != 0)  
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
         {
-            playerY08 = false;
+            transform.position += new Vector3(runningspeed, 0, 0) * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += new Vector3(walkingspeed, 0, 0) * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += new Vector3(-runningspeed, 0, 0) * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += new Vector3(-walkingspeed, 0, 0) * Time.deltaTime;
+        }
+
+
+
+
+
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumpsleft != 0)  
+        {
             jumpsleft--;
             jump();
             //Debug.Log("jump");
@@ -108,7 +112,8 @@ public class movement : MonoBehaviour
             force = (((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback;
             rb.AddForce(((float)force) * Mathf.Cos(angleatteck), ((float)force) * Mathf.Sin(angleatteck), 0);
         }
-        if (playerY <= -0.8)
+        movedoorplatformtimer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.S))
         {
             if (!movedoorplatform)
             {
@@ -119,13 +124,8 @@ public class movement : MonoBehaviour
                 }
             }
             movedoorplatform = true;
-            movedoorplatformtimer += Time.deltaTime;
         }
-        else if (movedoorplatformtimer >= 1)
-        {
-
-        }
-        else if (movedoorplatform)
+        else if (movedoorplatform && movedoorplatformtimer >= 0.5f && !Input.GetKey(KeyCode.S))
         {
             movedoorplatform = false;
             for (int i = 0; i < platform.Count; i++)
@@ -134,6 +134,13 @@ public class movement : MonoBehaviour
             }
 
         }
+        if (transform.position.y <= -7 || transform.position.x <= -7)
+        {
+            transform.position = new Vector3(2.83f, 2.04f, 0f);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        
 
 
     }
