@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf705480a66174b45bae78c68e2fecfc, type: 3}
+  m_Name: rollout
+  m_EditorClassIdentifier: 
+  AttackName: rollout
+  Scaling: 0.6
+  BaseKnockBack: 0
+  AngleAttack: 0.523599
+  SpawnDelay: 0.832
+  DespawnDelay: 2.256
+  Hitbox: {fileID: 907504424178513944, guid: 341a6142b9894ad4d8d18fb5f6f03825, type: 3}
+  Damage: 10

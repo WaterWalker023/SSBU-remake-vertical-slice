@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf705480a66174b45bae78c68e2fecfc, type: 3}
+  m_Name: jab2
+  m_EditorClassIdentifier: 
+  AttackName: jab2
+  Scaling: 0.15
+  BaseKnockBack: 0
+  AngleAttack: 6.3006
+  SpawnDelay: 0.048
+  DespawnDelay: 1
+  Hitbox: {fileID: 381555393206847759, guid: 216d09fec6fecb24b8dafb5eb1f6ef1a, type: 3}
+  Damage: 1.6
