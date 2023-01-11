@@ -362,7 +362,7 @@ MeshCollider:
   m_GameObject: {fileID: 919132148002352060}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -376,7 +376,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 366487843}
-  - component: {fileID: 366487844}
   m_Layer: 0
   m_Name: MapFocusPoint
   m_TagString: Untagged
@@ -399,24 +398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &366487844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366487842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a67cea0634806b24297d571348422277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HalfXBounds: 20
-  HalfYBounds: 15
-  HalfZBounds: 15
-  FocusBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &443897905
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,11 +900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d723fcd2620df047b72a866c8dc7b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystickNames: []
-  connectedcontrollers: []
-  player1: {fileID: 0}
-  Xbox: {fileID: 11400000, guid: 9f42a2137d370734eaa173eae4b12119, type: 2}
-  PS: {fileID: 11400000, guid: 574a95dc0c308f645a18e7b1f3f5495e, type: 2}
 --- !u!114 &1099138905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,17 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be247b8f6f4af741b3ccfdcde56d444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapFocusPoint: {fileID: 366487844}
-  Players:
-  - {fileID: 7643828481857618935}
-  - {fileID: 6547658425758329648}
-  DepthUpdateSpeed: 5
-  AngleUpdateSpeed: 7
-  PositionUpdateSpeed: 5
-  DepthMax: -10
-  DepthMin: -22
-  AngleMax: 11
-  AngleMin: 3
 --- !u!1 &1210575183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,28 +1442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c07edc611cfed4781d38085abaaea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacked: 0
-  percentage: 0
-  damage: 0
-  weight: 0
-  scaling: 0
-  baseknockback: 0
-  angleatteck: 0
-  walkingspeed: 5
-  runningspeed: 10
-  jumpstrength: 7
-  jumpsleft: 5
-  rb: {fileID: 1656519532}
-  playerY08: 0
-  playerY082: 0
-  groundCheck: {fileID: 1457706194}
-  groundDistance: 0.4
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  isGrounded: 0
-  grounds: []
-  force: 0
 --- !u!23 &1656519527
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4571,9 +4514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e1451321f207742912fac84b93e35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
-  secondDelay: 0
-  Hitbox: {fileID: 0}
 --- !u!1 &6550894806369757610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5350,28 +5290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c07edc611cfed4781d38085abaaea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacked: 0
-  percentage: 1
-  damage: 15
-  weight: 79
-  scaling: 10.4
-  baseknockback: 36
-  angleatteck: 1.309
-  walkingspeed: 5
-  runningspeed: 10
-  jumpstrength: 7
-  jumpsleft: 5
-  rb: {fileID: 7643828481857618936}
-  playerY08: 0
-  playerY082: 0
-  groundCheck: {fileID: 20622452}
-  groundDistance: 0.4
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  isGrounded: 0
-  grounds: []
-  force: 0
 --- !u!64 &7643828481857618938
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5398,11 +5316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8d934537b84cd4286a47a00434c909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rollout: {fileID: 11400000, guid: 62e83f04323b2c7498fdd5b2b64beba8, type: 2}
-  UpSmash: {fileID: 11400000, guid: 42373c21e3bdf6d46a83a9f1a06dd691, type: 2}
-  Jab: {fileID: 11400000, guid: ebcd3687568a26242ad670a8dfe590d0, type: 2}
-  Jab2: {fileID: 11400000, guid: ca46a4d2a57aa704ea4979400b33e463, type: 2}
-  attack: {fileID: 0}
 --- !u!23 &7762067044216960252
 MeshRenderer:
   m_ObjectHideFlags: 0
