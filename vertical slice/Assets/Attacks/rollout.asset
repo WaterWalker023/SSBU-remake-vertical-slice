@@ -19,4 +19,4 @@ MonoBehaviour:
   SpawnDelay: 0.832
   DespawnDelay: 2.256
   Hitbox: {fileID: 907504424178513944, guid: 341a6142b9894ad4d8d18fb5f6f03825, type: 3}
-  Damage: 10
+  Damage: 10.060887

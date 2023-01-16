@@ -10,58 +10,33 @@ public class DoAttacks : MonoBehaviour
     [SerializeField] private Attack Jab;
     [SerializeField] private Attack Jab2;
     [SerializeField] private Attack attack;
-
-    private float jab2Cooldown;
+    private float jab2Cooldown = 0.001f;
     private float UpsmashChargeCounter;
     private float RolloutChargeCounter;
     private float timer;
     private float RolloutChargeTimer;
     private float UpSmashChargeTimer;
-
-    private float PlayerY2;
     public Rigidbody rb;
     private float RolloutForce = 1;
-    public InputAction ExecuteAction;
-
-
-
-    private float lastFrameInputY = 0;
-    private float currentInputY = 0;
     // Start is called before the first frame update
     void Start()
     {
-       // ExecuteAction.performed += ctx => ExecuteAttack(UpSmash);
+
     }
-    /*private void OnEnable()
-    {
-        ExecuteAction.Enable();
-    }
-    private void OnDisable()
-    {
-        ExecuteAction.Disable();
-    }*/
-    // Update is called once per frame
     void Update()
     {
-
-       // currentInputY = Input.GetAxis("Vertical2");
-        PlayerY2 = Input.GetAxis("Vertical2");
-
-
-        if (lastFrameInputY > 0f && currentInputY == 0f) {
-            Debug.Log("released stick");
-        } 
-
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 2"))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             ExecuteAttack(Jab);
         }
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 1"))
+
+        if (Input.GetKey(KeyCode.O))
         {
             RolloutChargeCounter += Time.deltaTime;
             RolloutChargeTimer += Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 1"))
+
+        if (Input.GetKeyUp(KeyCode.O))
         {
             RolloutChargeTimer = 0;
             Rollout.Damage += (RolloutChargeCounter / 60);
@@ -69,7 +44,9 @@ public class DoAttacks : MonoBehaviour
             RolloutChargeCounter = 0;
             ExecuteAttack(Rollout);
             rb.AddForce(RolloutForce, 0, 0);
+            //StartCoroutine(StopBeweeg());
         }
+
         if (RolloutChargeTimer >= 3.7)
         {
             RolloutForce += RolloutChargeCounter * 60;
@@ -77,23 +54,29 @@ public class DoAttacks : MonoBehaviour
             RolloutChargeCounter = 0;
             Rollout.Damage = 25.2f;
             ExecuteAttack(Rollout);
-            rb.AddForce(RolloutForce, 0,0);
+            rb.AddForce(RolloutForce, 0, 0);
+            /*if ()
+            {
+                rb.AddForce(0, 0, 0, ForceMode.VelocityChange);
+            }*/
+            //StartCoroutine(StopBeweeg());
         }
-        if (PlayerY2 >= 0.8)
+
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             UpsmashChargeCounter += Time.deltaTime;
             UpSmashChargeTimer += Time.deltaTime;
         }
-        Debug.Log("playery2" + PlayerY2);
-        if (PlayerY2 < 0)
+
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            Debug.Log("hallo");
             UpSmashChargeTimer = 0;
             UpSmash.Damage = 15;
             UpSmash.Damage += UpsmashChargeCounter / 60;
             UpsmashChargeCounter = 0;
             ExecuteAttack(UpSmash);
         }
+
         if (UpSmashChargeTimer >= 3.7)
         {
             UpSmashChargeTimer = 0;
@@ -101,38 +84,40 @@ public class DoAttacks : MonoBehaviour
             UpSmash.Damage = 25.2f;
             ExecuteAttack(UpSmash);
         }
-        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown("joystick button 2"))
-        {
-            ExecuteAttack(Jab2);
-        }
+
         if (attack != null)
         {
             timer += Time.deltaTime;
+            
             if (timer > attack.SpawnDelay && timer < attack.DespawnDelay)
             {
-                Debug.Log("hoi");
-                HitboxInstance = Instantiate(attack.Hitbox, transform.position + new Vector3(0, 0, -0.923f), Quaternion.identity);
-                Debug.Log(HitboxInstance);
+                if (HitboxInstance == null)
+                {
+                    HitboxInstance = Instantiate(attack.Hitbox, transform.position, Quaternion.identity);
+                }
+                if (attack.name == "rollout")
+                {
+                    HitboxInstance.transform.position = rb.transform.position;
+                }
+                
+            }
+
+            if (attack.name == "Jab")
+            {
+                timer += Time.deltaTime;
+                if (timer < jab2Cooldown && (Input.GetKeyDown(KeyCode.P)))
+                {
+                    ExecuteAttack(Jab2);
+                }
             }
             if (timer > attack.DespawnDelay)
             {
                 Destroy(HitboxInstance);
+                attack = null;
+                timer = 0;
             }
-            timer = 0;
-            if (attack.name == "Jab")
-            {
-                timer += Time.deltaTime;
-                if (timer < jab2Cooldown && (Input.GetKeyDown(KeyCode.E) || Input.GetButton("a")))
-                {
-                    ExecuteAttack(Jab2);
-                    timer = 0;
-                }
-            }
-            attack = null;
+
         }
-
-
-        lastFrameInputY = currentInputY;
     }
 
     public void ExecuteAttack(Attack attack)
@@ -140,10 +125,34 @@ public class DoAttacks : MonoBehaviour
         this.attack = attack;
         Debug.Log(attack.name);
         //animatie doen
-        /*jigglypuff.damage += attack.damage;
-         * jigglypuff.Scaling = attack.Scaling;
-         * jigglypuff.BaseKnockBack = attack.BaseKnockBack;
-         * jigglypuff.AngleAttack = attack.AngleAttack;
-         */
+        /*jigglypuffScript.damage += attack.Damage;
+        jigglypuffScript.Scaling = attack.Scaling;
+        jigglypuffScript.BaseKnockBack = attack.BaseKnockBack;
+        jigglypuffScript.AngleAttack = attack.AngleAttack;*/
+    }
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Jigglypuff")
+        {
+            rb.velocity = Vector3.zero;
+        }
+    }*/
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Jigglypuff")
+        {
+            Debug.Log("Aan raak");
+            rb.velocity = Vector3.zero;
+        }
+    }
+
+    IEnumerator StopBeweeg()
+    {
+        yield return new WaitForSeconds(4f);
+        rb.velocity = Vector3.zero;
+        Debug.Log("Kiekeboe");
+        yield return null;
     }
 }
