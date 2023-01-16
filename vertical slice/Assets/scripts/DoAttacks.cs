@@ -10,7 +10,7 @@ public class DoAttacks : MonoBehaviour
     [SerializeField] private Attack Jab;
     [SerializeField] private Attack Jab2;
     [SerializeField] private Attack attack;
-    private float jab2Cooldown = 0.001f;
+    private float jab2Cooldown = 2f;
     private float UpsmashChargeCounter;
     private float RolloutChargeCounter;
     private float timer;
@@ -18,6 +18,7 @@ public class DoAttacks : MonoBehaviour
     private float UpSmashChargeTimer;
     public Rigidbody rb;
     private float RolloutForce = 1;
+    public Jigglypuff jigglypuffScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,6 @@ public class DoAttacks : MonoBehaviour
             RolloutChargeCounter = 0;
             ExecuteAttack(Rollout);
             rb.AddForce(RolloutForce, 0, 0);
-            //StartCoroutine(StopBeweeg());
         }
 
         if (RolloutChargeTimer >= 3.7)
@@ -55,11 +55,6 @@ public class DoAttacks : MonoBehaviour
             Rollout.Damage = 25.2f;
             ExecuteAttack(Rollout);
             rb.AddForce(RolloutForce, 0, 0);
-            /*if ()
-            {
-                rb.AddForce(0, 0, 0, ForceMode.VelocityChange);
-            }*/
-            //StartCoroutine(StopBeweeg());
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -95,11 +90,17 @@ public class DoAttacks : MonoBehaviour
                 {
                     HitboxInstance = Instantiate(attack.Hitbox, transform.position, Quaternion.identity);
                 }
+                
                 if (attack.name == "rollout")
                 {
+                    Physics.IgnoreCollision(transform.GetComponent<Collider>(), HitboxInstance.GetComponent<Collider>(), true);
                     HitboxInstance.transform.position = rb.transform.position;
                 }
-                
+                else
+                {
+                    Physics.IgnoreCollision(transform.GetComponent<Collider>(), HitboxInstance.GetComponent<Collider>(), true);
+                    HitboxInstance.transform.position = (rb.transform.position + new Vector3(1f, 0.5f, 0));
+                }
             }
 
             if (attack.name == "Jab")
@@ -125,34 +126,20 @@ public class DoAttacks : MonoBehaviour
         this.attack = attack;
         Debug.Log(attack.name);
         //animatie doen
-        /*jigglypuffScript.damage += attack.Damage;
-        jigglypuffScript.Scaling = attack.Scaling;
-        jigglypuffScript.BaseKnockBack = attack.BaseKnockBack;
-        jigglypuffScript.AngleAttack = attack.AngleAttack;*/
+        
     }
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.name == "Jigglypuff")
-        {
-            rb.velocity = Vector3.zero;
-        }
-    }*/
 
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.name == "Jigglypuff")
         {
+            jigglypuffScript.damage += attack.Damage;
+            jigglypuffScript.Scaling = attack.Scaling;
+            jigglypuffScript.BaseKnockBack = attack.BaseKnockBack;
+            jigglypuffScript.AngleAttack = attack.AngleAttack;
             Debug.Log("Aan raak");
             rb.velocity = Vector3.zero;
         }
-    }
-
-    IEnumerator StopBeweeg()
-    {
-        yield return new WaitForSeconds(4f);
-        rb.velocity = Vector3.zero;
-        Debug.Log("Kiekeboe");
-        yield return null;
     }
 }
