@@ -24,18 +24,20 @@ public class Jigglypuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attacked)
+        if (attacked || Input.GetKeyDown(KeyCode.T))
         {
             attacked = false;
             Debug.Log((((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback);
             force = (((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback;
             rb.AddForce(((float)force) * Mathf.Cos(angleatteck), ((float)force) * Mathf.Sin(angleatteck), 0);
+            percentage += damage;
         }
-        if (transform.position.y <= -7 || transform.position.x <= -30 || transform.position.x >= 30 ||transform.position.y >= 30)
+        if (transform.position.y <= -30 || transform.position.x <= -30 || transform.position.x >= 30 ||transform.position.y >= 30)
         {
             transform.position = new Vector3(2.83f, 2.04f, 0f);
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            percentage = 0;
         }
     }
 }

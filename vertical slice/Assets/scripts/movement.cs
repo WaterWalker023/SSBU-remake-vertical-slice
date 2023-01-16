@@ -17,6 +17,8 @@ public class movement : MonoBehaviour
     [SerializeField] float runningspeed;
     [SerializeField] float jumpstrength;
     [SerializeField] int jumpsleft;
+    [SerializeField] bool isjumping;
+    [SerializeField] float isjumpingtimer;
     [SerializeField] Rigidbody rb;
     //buttonmapping buttons;
     //[SerializeField] bool playerY08;
@@ -90,27 +92,44 @@ public class movement : MonoBehaviour
             transform.position += new Vector3(-walkingspeed, 0, 0) * Time.deltaTime;
         }
 
-
-
-
-
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumpsleft != 0)  
+        isjumpingtimer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))  
         {
-            jumpsleft--;
-            jump();
+            //jump();
+            isjumping = true;
             //Debug.Log("jump");
         }
-
+        if (isjumping)
+        {
+            isjumping = false;
+            if(isjumpingtimer > 0.8f)
+            {
+                isjumpingtimer = 0;
+                jump();
+            }
+            else if (isjumpingtimer > 0.6f)
+            {
+                isjumping = true;
+            }
+        }
         if (isGrounded && grounds.Count > 0)
         {
             jumpsleft = 5;
         }
-        if (attacked)
+        if (attacked || Input.GetKeyDown(KeyCode.R))
         {
             attacked = false;
-            Debug.Log((((percentage / 10)+((percentage*damage)/20)*(200/(weight+100)*1.4)+18)*scaling)+baseknockback);
+            //Debug.Log((((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback);
             force = (((percentage / 10) + ((percentage * damage) / 20) * (200 / (weight + 100) * 1.4) + 18) * scaling) + baseknockback;
             rb.AddForce(((float)force) * Mathf.Cos(angleatteck), ((float)force) * Mathf.Sin(angleatteck), 0);
+            percentage += damage;
+        }
+        if (transform.position.y <= -30 || transform.position.x <= -30 || transform.position.x >= 30 || transform.position.y >= 30)
+        {
+            transform.position = new Vector3(-2.97f, 2.24f, 0f);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            percentage = 0;
         }
         movedoorplatformtimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.S))
@@ -134,19 +153,17 @@ public class movement : MonoBehaviour
             }
 
         }
-        if (transform.position.y <= -7 || transform.position.x <= -7)
-        {
-            transform.position = new Vector3(2.83f, 2.04f, 0f);
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
         
 
 
     }
     void jump()
     {
-        rb.velocity = new Vector3(0, jumpstrength, 0);
+        if (jumpsleft > 0)
+        {
+            jumpsleft--;
+            rb.AddForce(0, jumpstrength, 0);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
