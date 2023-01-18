@@ -7361,6 +7361,7 @@ GameObject:
   - component: {fileID: 6547658425758329649}
   - component: {fileID: 6547658425758329650}
   - component: {fileID: 6547658425758329651}
+  - component: {fileID: 6547658425758329652}
   m_Layer: 0
   m_Name: Jigglypuff
   m_TagString: Untagged
@@ -7418,6 +7419,26 @@ MonoBehaviour:
   BaseKnockBack: 0
   AngleAttack: 0
   rb: {fileID: 6547658425758329649}
+--- !u!95 &6547658425758329652
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547658425758329648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 09a6b4867cb7f574599eedaa7f29789f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0d6e3753bb940a044a45df8559db781d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6645823805143848875
 Transform:
   m_ObjectHideFlags: 0

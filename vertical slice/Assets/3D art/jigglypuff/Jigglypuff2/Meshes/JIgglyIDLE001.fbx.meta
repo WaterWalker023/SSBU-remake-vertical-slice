@@ -1,0 +1,292 @@
+fileFormatVersion: 2
+guid: 09a6b4867cb7f574599eedaa7f29789f
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 540
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: JIgglyIDLE001(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: 0.0049312846, y: 0.025877913, z: 0.0013210784}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pasted__pSphere4
+      parentName: group
+      position: {x: -0.044946555, y: -0.005528338, z: 0.00812473}
+      rotation: {x: 0.05477345, y: -0.8193066, z: -0.040247463, w: 0.56931245}
+      scale: {x: 0.5399648, y: 0.25771427, z: 0.25771427}
+    - name: pasted__pSphere5
+      parentName: group
+      position: {x: -0.03136982, y: -0.004392779, z: 0.00866381}
+      rotation: {x: 0.22072464, y: -0.46942753, z: -0.04044855, w: 0.8539803}
+      scale: {x: 0.501918, y: 0.25771427, z: 0.25771427}
+    - name: group2
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: 0.016151184, y: 0.033548437, z: 0.06492912}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pasted__ambientLight1
+      parentName: group2
+      position: {x: -0.048147615, y: 0.05646799, z: 0.09291926}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pasted__pointLight1
+      parentName: group2
+      position: {x: 0.0022845517, y: 0.05790635, z: -0.0632107}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pasted__volumeLight1
+      parentName: group2
+      position: {x: -0.04929115, y: -0.048747167, z: -0.057030868}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1.2934406, y: 1.2934406, z: 1.2934406}
+    - name: pSphere1
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.042540915, y: 0.0054089557, z: 0}
+      rotation: {x: 0.07497099, y: -0, z: -0, w: 0.9971857}
+      scale: {x: 0.51265347, y: 0.31823555, z: 0.9266653}
+    - name: pSphere2
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.024094963, y: 0.0055973446, z: 0}
+      rotation: {x: 0.07182646, y: 0.11568695, z: 0.010074304, w: 0.99063414}
+      scale: {x: 0.5200627, y: 0.32283494, z: 0.9400582}
+    - name: pSphere4
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.041399036, y: 0.028017594, z: 0.0144135505}
+      rotation: {x: -0.12450886, y: -0.2515901, z: -0.034931842, w: 0.95915574}
+      scale: {x: 0.59622043, y: 0.59622043, z: 0.24707428}
+    - name: pSphere5
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.022704622, y: 0.027896704, z: 0.0129508935}
+      rotation: {x: -0.15305305, y: 0.27905166, z: -0.10443944, w: 0.94223}
+      scale: {x: 0.5823933, y: 0.5823933, z: 0.2413443}
+    - name: Group5425
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: 0.0126994, y: 0.00076656643, z: -0.0000000028635871}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.000039321123, y: 0.000039321123, z: 0.000039321123}
+    - name: transform2
+      parentName: Group5425
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere6
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: 0.01203758, y: 0.023985283, z: -0.001977933}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.1586452, y: 2.1586452, z: 2.1586452}
+    - name: transform1
+      parentName: pSphere6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pasted__pPlane4
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: left
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: 10.000999, y: 0, z: 0}
+      rotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group3
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.029199013, y: 0.018346453, z: 0.0036165076}
+      rotation: {x: 0.009313462, y: -0.0011039721, z: 0.0024571312, w: 0.99995303}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rotating
+      parentName: JIgglyIDLE001(Clone)
+      position: {x: -0.029199013, y: 0.026852457, z: 0.0036165076}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Squash
+      parentName: Rotating
+      position: {x: -0, y: -0.008506006, z: 0}
+      rotation: {x: -0.064411625, y: 0.0032205812, z: 0.057524525, w: 0.9962589}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ROOT_joint
+      parentName: Squash
+      position: {x: -0.0037721419, y: -0.010846453, z: -0.0036165076}
+      rotation: {x: -0.87130314, y: 0.45458192, z: -0.16711417, w: -0.079113916}
+      scale: {x: 1.0000015, y: 1.0000015, z: 1.0000018}
+    - name: L_Foot_Joint
+      parentName: ROOT_joint
+      position: {x: 0.0032402405, y: 0.009479178, z: 0.006001477}
+      rotation: {x: 0.44736466, y: -0.4169153, z: 0.78436315, w: 0.10402408}
+      scale: {x: 1.0000019, y: 1.0000004, z: 1.0000014}
+    - name: L_Toes_Joint
+      parentName: L_Foot_Joint
+      position: {x: -0.012485579, y: -3.330669e-18, z: 2.7723554e-18}
+      rotation: {x: -0.07565524, y: -0.70304793, z: -0.07565513, w: 0.7030478}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Head_Joint
+      parentName: ROOT_joint
+      position: {x: -0.028049627, y: 0, z: 9.860761e-34}
+      rotation: {x: 0.69657135, y: -0.7174876, z: -0.000000042685443, w: -0.00000006948005}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: R_Foot_Joint
+      parentName: ROOT_joint
+      position: {x: 0.0027037545, y: -0.008651511, z: 0.00600148}
+      rotation: {x: -0.55712736, y: -0.43544137, z: 0.45172885, w: -0.5440046}
+      scale: {x: 1.0000005, y: 1.000002, z: 1.0000008}
+    - name: R_Toes_Joint
+      parentName: R_Foot_Joint
+      position: {x: 0.012485586, y: 0.0000000070130937, z: 0.0009816159}
+      rotation: {x: -0.075655155, y: -0.70304793, z: -0.07565511, w: 0.7030478}
+      scale: {x: 0.99999994, y: 1.0000005, z: 1.0000002}
+    - name: R_Arm_Joint
+      parentName: ROOT_joint
+      position: {x: -0.0032123255, y: -0.0052322852, z: -0.0033391654}
+      rotation: {x: 0.000000034543177, y: -0.000000042832763, z: 0.8340421, w: 0.5517009}
+      scale: {x: 1.0000024, y: 1.0000001, z: 1.0000027}
+    - name: R_Hand_Joint
+      parentName: R_Arm_Joint
+      position: {x: -0.00481314, y: -0.00051745353, z: -0.007227683}
+      rotation: {x: -0.2141158, y: -0.9768083, z: 0.000000013039225, w: 0.0000000050305964}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1.0000006}
+    - name: L_Arm_Joint
+      parentName: ROOT_joint
+      position: {x: -0.005447129, y: 0.0053741685, z: -0.0029984643}
+      rotation: {x: -0.8499947, y: -0.5267913, z: -0.000000031585646, w: 0.0000000044492676}
+      scale: {x: 1.0000024, y: 1.000002, z: 1.0000006}
+    - name: L_Hand_Joint
+      parentName: L_Arm_Joint
+      position: {x: 0.0036643473, y: -0.00012494887, z: 0.00807561}
+      rotation: {x: -0.21411577, y: -0.97680837, z: -0.000000065116225, w: 0.000000026301151}
+      scale: {x: 0.9999997, y: 0.9999997, z: 0.9999998}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
