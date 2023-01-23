@@ -19,6 +19,7 @@ public class DoAttacks : MonoBehaviour
     public Rigidbody rb;
     private float RolloutForce = 1;
     public Jigglypuff jigglypuffScript;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -125,7 +126,10 @@ public class DoAttacks : MonoBehaviour
     {
         this.attack = attack;
         Debug.Log(attack.name);
-        //animatie doen
+        if(attack.name == "upsmash")
+        {
+            animator.Play("upsmash");
+        }
         
     }
 
