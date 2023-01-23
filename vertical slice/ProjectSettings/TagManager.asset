@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Solidground
   - Platform
+  - Attack
   layers:
   - Default
   - TransparentFX
