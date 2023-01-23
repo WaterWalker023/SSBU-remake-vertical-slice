@@ -20,6 +20,7 @@ public class DoAttacks : MonoBehaviour
     private float RolloutForce = 1;
     public Jigglypuff jigglypuffScript;
     public Animator animator;
+    public Transform ME;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +90,8 @@ public class DoAttacks : MonoBehaviour
             {
                 if (HitboxInstance == null)
                 {
-                    HitboxInstance = Instantiate(attack.Hitbox, transform.position, Quaternion.identity);
+                    HitboxInstance = Instantiate(attack.Hitbox,transform.position, Quaternion.identity);
+                    HitboxInstance.transform.parent = this.transform;
                 }
                 
                 if (attack.name == "rollout")
@@ -117,6 +119,14 @@ public class DoAttacks : MonoBehaviour
                 Destroy(HitboxInstance);
                 attack = null;
                 timer = 0;
+                if(attack.name == "upsmash")
+                {
+                    attack.Damage = 15;
+                }
+                if (attack.name == "rollout")
+                {
+                    attack.Damage = 10;
+                }
             }
 
         }
@@ -133,17 +143,19 @@ public class DoAttacks : MonoBehaviour
         
     }
 
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.name == "Jigglypuff")
         {
-            jigglypuffScript.damage += attack.Damage;
+            jigglypuffScript.damage = attack.Damage;
             jigglypuffScript.Scaling = attack.Scaling;
             jigglypuffScript.BaseKnockBack = attack.BaseKnockBack;
             jigglypuffScript.AngleAttack = attack.AngleAttack;
+            jigglypuffScript.attacked = true;
             Debug.Log("Aan raak");
             rb.velocity = Vector3.zero;
+
         }
     }
+    
 }
